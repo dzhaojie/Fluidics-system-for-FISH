@@ -1,0 +1,331 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+// Uncomment following line to use Bluetooth serial interface instead of USB
+//#define BLUETOOTH_SERIAL
+
+#include <XIO.h>
+
+// Testing stuff
+// ---------------------------------------
+
+// if the following line is uncommented, the neopixel-related code in controller.[h/cpp] will be compiled (switching LEDs on/off when valves are toggled)
+//#define NEOPIXELS
+#define NEOPIXELS_DATA_PIN 14
+
+
+// I/O pins
+// ---------------------------------------
+#define XIO_RESET_PIN 13 // pins of ESP-WROOM-32
+#define XIO_OE_PIN 12
+
+//#define PUMP1_PIN 32
+//#define PUMP2_PIN 33
+
+#define DAC0 25  //for setting the pressure regulator, here only use ESP-WROOM-32 IO25
+
+
+//#define PR1_I2C_ADDRESS 43 // This is for I2C pressure regulator, for now we only use on analog regulator
+//#define PR2_I2C_ADDRESS 44
+
+#define PR1_SETPOINT_PIN DAC0
+#define PR1_MEASUREMENT_PIN 34
+#define FR_MEASUREMENT_PIN 35
+
+
+#define DAC_MAX_VALUE 255
+#define ADC_MAX_VALUE 4095
+
+
+#define VALVE1_PIN XIO_PIN_A7
+#define VALVE2_PIN XIO_PIN_A6
+#define VALVE3_PIN XIO_PIN_A5
+#define VALVE4_PIN XIO_PIN_A4
+#define VALVE5_PIN XIO_PIN_A3
+#define VALVE6_PIN XIO_PIN_A2
+#define VALVE7_PIN XIO_PIN_A1
+#define VALVE8_PIN XIO_PIN_A0
+
+#define VALVE9_PIN XIO_PIN_B7
+#define VALVE10_PIN XIO_PIN_B6
+#define VALVE11_PIN XIO_PIN_B5
+#define VALVE12_PIN XIO_PIN_B4
+#define VALVE13_PIN XIO_PIN_B3
+#define VALVE14_PIN XIO_PIN_B2
+#define VALVE15_PIN XIO_PIN_B1
+#define VALVE16_PIN XIO_PIN_B0
+
+#define VALVE17_PIN XIO_PIN_C7
+#define VALVE18_PIN XIO_PIN_C6
+#define VALVE19_PIN XIO_PIN_C5
+#define VALVE20_PIN XIO_PIN_C4
+#define VALVE21_PIN XIO_PIN_C3
+#define VALVE22_PIN XIO_PIN_C2
+#define VALVE23_PIN XIO_PIN_C1
+#define VALVE24_PIN XIO_PIN_C0
+
+#define VALVE25_PIN XIO_PIN_D7
+#define VALVE26_PIN XIO_PIN_D6
+#define VALVE27_PIN XIO_PIN_D5
+#define VALVE28_PIN XIO_PIN_D4
+#define VALVE29_PIN XIO_PIN_D3
+#define VALVE30_PIN XIO_PIN_D2
+#define VALVE31_PIN XIO_PIN_D1
+#define VALVE32_PIN XIO_PIN_D0
+
+#define VALVE33_PIN XIO_PIN_E7
+#define VALVE34_PIN XIO_PIN_E6
+#define VALVE35_PIN XIO_PIN_E5
+#define VALVE36_PIN XIO_PIN_E4
+#define VALVE37_PIN XIO_PIN_E3
+#define VALVE38_PIN XIO_PIN_E2
+#define VALVE39_PIN XIO_PIN_E1
+#define VALVE40_PIN XIO_PIN_E0
+
+#define VALVE41_PIN XIO_PIN_A7
+#define VALVE42_PIN XIO_PIN_A6
+#define VALVE43_PIN XIO_PIN_A5
+#define VALVE44_PIN XIO_PIN_A4
+#define VALVE45_PIN XIO_PIN_A3
+#define VALVE46_PIN XIO_PIN_A2
+#define VALVE47_PIN XIO_PIN_A1
+#define VALVE48_PIN XIO_PIN_A0
+
+#define VALVE49_PIN XIO_PIN_B7
+#define VALVE50_PIN XIO_PIN_B6
+#define VALVE51_PIN XIO_PIN_B5
+#define VALVE52_PIN XIO_PIN_B4
+#define VALVE53_PIN XIO_PIN_B3
+#define VALVE54_PIN XIO_PIN_B2
+#define VALVE55_PIN XIO_PIN_B1
+#define VALVE56_PIN XIO_PIN_B0
+
+#define VALVE57_PIN XIO_PIN_C7
+#define VALVE58_PIN XIO_PIN_C6
+#define VALVE59_PIN XIO_PIN_C5
+#define VALVE60_PIN XIO_PIN_C4
+#define VALVE61_PIN XIO_PIN_C3
+#define VALVE62_PIN XIO_PIN_C2
+#define VALVE63_PIN XIO_PIN_C1
+#define VALVE64_PIN XIO_PIN_C0
+
+#define VALVE65_PIN XIO_PIN_D7
+#define VALVE66_PIN XIO_PIN_D6
+#define VALVE67_PIN XIO_PIN_D5
+#define VALVE68_PIN XIO_PIN_D4
+#define VALVE69_PIN XIO_PIN_D3
+#define VALVE70_PIN XIO_PIN_D2
+#define VALVE71_PIN XIO_PIN_D1
+#define VALVE72_PIN XIO_PIN_D0
+
+#define VALVE73_PIN XIO_PIN_E7
+#define VALVE74_PIN XIO_PIN_E6
+#define VALVE75_PIN XIO_PIN_E5
+#define VALVE76_PIN XIO_PIN_E4
+#define VALVE77_PIN XIO_PIN_E3
+#define VALVE78_PIN XIO_PIN_E2
+#define VALVE79_PIN XIO_PIN_E1
+#define VALVE80_PIN XIO_PIN_E0
+
+#define VALVE81_PIN XIO_PIN_A7
+#define VALVE82_PIN XIO_PIN_A6
+#define VALVE83_PIN XIO_PIN_A5
+#define VALVE84_PIN XIO_PIN_A4
+#define VALVE85_PIN XIO_PIN_A3
+#define VALVE86_PIN XIO_PIN_A2
+#define VALVE87_PIN XIO_PIN_A1
+#define VALVE88_PIN XIO_PIN_A0
+
+#define VALVE89_PIN XIO_PIN_B7
+#define VALVE90_PIN XIO_PIN_B6
+#define VALVE91_PIN XIO_PIN_B5
+#define VALVE92_PIN XIO_PIN_B4
+#define VALVE93_PIN XIO_PIN_B3
+#define VALVE94_PIN XIO_PIN_B2
+#define VALVE95_PIN XIO_PIN_B1
+#define VALVE96_PIN XIO_PIN_B0
+
+#define VALVE97_PIN XIO_PIN_C7
+#define VALVE98_PIN XIO_PIN_C6
+#define VALVE99_PIN XIO_PIN_C5
+#define VALVE100_PIN XIO_PIN_C4
+#define VALVE101_PIN XIO_PIN_C3
+#define VALVE102_PIN XIO_PIN_C2
+#define VALVE103_PIN XIO_PIN_C1
+#define VALVE104_PIN XIO_PIN_C0
+
+#define VALVE105_PIN XIO_PIN_D7
+#define VALVE106_PIN XIO_PIN_D6
+#define VALVE107_PIN XIO_PIN_D5
+#define VALVE108_PIN XIO_PIN_D4
+#define VALVE109_PIN XIO_PIN_D3
+#define VALVE110_PIN XIO_PIN_D2
+#define VALVE111_PIN XIO_PIN_D1
+#define VALVE112_PIN XIO_PIN_D0
+
+#define VALVE113_PIN XIO_PIN_E7
+#define VALVE114_PIN XIO_PIN_E6
+#define VALVE115_PIN XIO_PIN_E5
+#define VALVE116_PIN XIO_PIN_E4
+#define VALVE117_PIN XIO_PIN_E3
+#define VALVE118_PIN XIO_PIN_E2
+#define VALVE119_PIN XIO_PIN_E1
+#define VALVE120_PIN XIO_PIN_E0
+// Pressure control loop constants
+// -------------------------------
+#define PRESSURE_LOW_THRESHOLD_RATIO 0.8
+#define PRESSURE_HIGH_THRESHOLD_RATIO 1.0
+
+// Constants for serial communication -- don't edit (or also edit them on the PC side)
+// ---------------------------------------
+
+#define START_BYTE 249
+#define END_BYTE 250
+
+enum ComponentID : uint8_t {
+	VALVE1=0,
+	VALVE2,
+	VALVE3,
+	VALVE4,
+	VALVE5,
+	VALVE6,
+	VALVE7,
+	VALVE8,
+	VALVE9,
+	VALVE10,
+	VALVE11,
+	VALVE12,
+	VALVE13,
+	VALVE14,
+	VALVE15,
+	VALVE16,
+	VALVE17,
+	VALVE18,
+	VALVE19,
+	VALVE20,
+	VALVE21,
+	VALVE22,
+	VALVE23,
+	VALVE24,
+	VALVE25,
+	VALVE26,
+	VALVE27,
+	VALVE28,
+	VALVE29,
+	VALVE30,
+	VALVE31,
+	VALVE32,
+	VALVE33,
+	VALVE34,
+	VALVE35,
+	VALVE36,
+	VALVE37,
+	VALVE38,
+	VALVE39,
+	VALVE40,
+	VALVE41,
+	VALVE42,
+	VALVE43,
+	VALVE44,
+	VALVE45,
+	VALVE46,
+	VALVE47,
+	VALVE48,
+	VALVE49,
+	VALVE50,
+	VALVE51,
+	VALVE52,
+	VALVE53,
+	VALVE54,
+	VALVE55,
+	VALVE56,
+	VALVE57,
+	VALVE58,
+	VALVE59,
+	VALVE60,
+	VALVE61,
+	VALVE62,
+	VALVE63,
+	VALVE64,
+	VALVE65,
+	VALVE66,
+	VALVE67,
+	VALVE68,
+	VALVE69,
+	VALVE70,
+	VALVE71,
+	VALVE72,
+	VALVE73,
+	VALVE74,
+	VALVE75,
+	VALVE76,
+	VALVE77,
+	VALVE78,
+	VALVE79,
+	VALVE80,
+	VALVE81,
+	VALVE82,
+	VALVE83,
+	VALVE84,
+	VALVE85,
+	VALVE86,
+	VALVE87,
+	VALVE88,
+	VALVE89,
+	VALVE90,
+	VALVE91,
+	VALVE92,
+	VALVE93,
+	VALVE94,
+	VALVE95,
+	VALVE96,
+	VALVE97,
+	VALVE98,
+	VALVE99,
+	VALVE100,
+	VALVE101,
+	VALVE102,
+	VALVE103,
+	VALVE104,
+	VALVE105,
+	VALVE106,
+	VALVE107,
+	VALVE108,
+	VALVE109,
+	VALVE110,
+	VALVE111,
+	VALVE112,
+	VALVE113,
+	VALVE114,
+	VALVE115,
+	VALVE116,
+	VALVE117,
+	VALVE118,
+	VALVE119,
+	VALVE120,	
+    PR1,
+    ALL_COMPONENTS // leave this as the last element, to allow iterating over the enum
+};
+
+enum ValveStates : uint8_t {
+    OPEN = ALL_COMPONENTS+1, // 122
+    CLOSED
+};
+
+
+
+enum SerialRequests : uint8_t {
+    STATUS_REQUEST = CLOSED+1, // request status of a certain component (or all)
+    UPTIME
+};
+
+enum Errors : uint8_t {
+    ERROR = UPTIME+1,
+    NO_ERROR,
+    UNKNOWN,
+    PRESSURE_REGULATOR_NOT_RESPONDING
+};
+
+// ---------------------------------------
+
+#endif
