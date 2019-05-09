@@ -314,10 +314,10 @@ void Controller::handleSerialData()
         //secondByte = 122;
 
 #endif
-        Log.notice("Received %d bytes: %d ; %d \n", length, firstByte, secondByte);
+        //Log.notice("Received %d bytes: %d ; %d \n", length, firstByte, secondByte);
 
         if (firstByte == STATUS_REQUEST) {
-            Log.notice("Status request for component %d \n", secondByte);
+            //Log.notice("Status request for component %d \n", secondByte);
             if (secondByte == ALL_COMPONENTS)
                 sendAllComponentValues();
             else
@@ -328,7 +328,7 @@ void Controller::handleSerialData()
             if (mComponents.count(static_cast<ComponentID>(firstByte))) {  //returns the number of elements matching specific key 
                 // Set requested value and communicate the new state
                 mComponents[static_cast<ComponentID>(firstByte)]->setValue(secondByte);
-                sendComponentValue(static_cast<ComponentID>(firstByte));
+                //sendComponentValue(static_cast<ComponentID>(firstByte));
 
 #ifdef NEOPIXELS
                 setNeoPixel(firstByte - VALVE1, (secondByte == OPEN ? green : red));

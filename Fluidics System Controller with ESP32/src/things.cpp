@@ -45,7 +45,7 @@ void Valve::setValue(uint8_t value)
                 || (value == CLOSED && mNormallyOpen))
             pinLevel = HIGH;
 
-        Log.notice("Switching valve %s \n", value == OPEN ? "open" : "closed");
+        //Log.notice("Switching valve %s \n", value == OPEN ? "open" : "closed");
 
 
         controller.xioDigitalWrite(mPin, pinLevel, mPCA9698Chip, mXIORefreshRequested);
@@ -135,7 +135,7 @@ void PressureController::setValue(uint8_t value)
 
     if (mInterface == analog) {
         mSetPointValue = value;
-        Log.notice("Setting pressure to %d \n", value);
+        //Log.notice("Setting pressure to %d \n", value);
 
         /*
         int toWrite = value;
@@ -144,9 +144,9 @@ void PressureController::setValue(uint8_t value)
             int toWrite = double(value)/double(UINT8_MAX) * mSetPointMaxValue;
             */
 
-        double x = double(value)/double(UINT8_MAX);
+        double x = 5*double(value)/double(UINT8_MAX);
 
-        double y = 0.3306*pow(x, 3) - 0.428*pow(x, 2) + 1.0961*x - 0.0258;
+        double y = -0.0006112*pow(x, 3) + 0.004547*pow(x, 2) + 0.2013*x - 0.02479;
         int toWrite = std::min(mSetPointMaxValue,
                                std::max(0, int(round(y*mSetPointMaxValue))));
 
@@ -181,9 +181,9 @@ uint8_t PressureController::getValue()
         */
 
         double x = val;
-        double y = -3e-12*pow(x, 3) - 7e-10*pow(x, 2) + 0.0003*x + 0.0169;
+        double y = 3.96668e-12*pow(x, 3) - 4.83738e-8*pow(x, 2) + 0.000915809*x + 0.0471799;
 
-        mMeasuredValue = std::min(255, std::max(0, int(round(y*UINT8_MAX))));
+        mMeasuredValue = std::min(255, std::max(0, int(round((y/3.3)*UINT8_MAX))));
 
         // Rescale value to match range of uint8_t (0 to 255)
         //mMeasuredValue = double(val)/double(mMeasurementMaxValue) * UINT8_MAX;
